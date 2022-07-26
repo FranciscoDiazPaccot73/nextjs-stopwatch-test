@@ -1,3 +1,4 @@
+import { GetStaticPaths } from 'next'
 import Image from 'next/image'
 import Stopwatch from '../components/Stopwatch';
 
@@ -30,9 +31,9 @@ const Home = ({ data }: Props) => {
         alignItems: "center",
         justifyContent: "center"
       }}>
-        <div style={{ backgroundColor: '#fff' }}>
+        <div style={{ backgroundColor: '#fff', padding: "0 16px" }}>
           <Image
-            src="/logo.svg"
+            src="/vercel.svg"
             height="100"
             width="100"
             alt="the fresh logo: a sliced lemon dripping with juice"
@@ -70,8 +71,9 @@ const Home = ({ data }: Props) => {
   );
 }
 
-export async function getServerSideProps() {
-  const url = `https://api.openweathermap.org/data/2.5/weather?appid=697cb7795cff3ff2640e6a4556a4f91a&units=metric&q=${"Buenos Aires"}`
+export async function getServerSideProps(context: any) {
+  const { city } = context.query;
+  const url = `https://api.openweathermap.org/data/2.5/weather?appid=697cb7795cff3ff2640e6a4556a4f91a&units=metric&q=${city}`
   const res = await fetch(url);
 
   const json = await res.json()
