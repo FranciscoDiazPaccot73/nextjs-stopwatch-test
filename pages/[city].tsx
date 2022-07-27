@@ -36,6 +36,7 @@ const Home = ({ data }: Props) => {
             src="/vercel.svg"
             height="100"
             width="100"
+            priority
             alt="the fresh logo: a sliced lemon dripping with juice"
           />
         </div>
@@ -51,7 +52,7 @@ const Home = ({ data }: Props) => {
               top: "10px",
               fontWeight: 600
               }}>{`${Math.floor(data?.temp || 0)}° C`}</div>
-            <Image height={50} width={50} src={`http://openweathermap.org/img/w/${data?.icon}.png`} alt={data?.description} ></Image>
+            <Image priority height={50} width={50} src={`http://openweathermap.org/img/w/${data?.icon}.png`} alt={data?.description} ></Image>
             <div style={{ marginTop: "-18px" }}>
               <div>
                 <span style={{ fontSize: "14px", marginRight: "4px" }}>{data?.name}</span>
